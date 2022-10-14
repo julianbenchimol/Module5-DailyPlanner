@@ -44,6 +44,7 @@ $(document).ready(function(){
     setInterval(UpdateTime, 1000);
 });
 
+//Save the Notes and update text content
 function SaveNotes(){
     hourNineNotes = $('#hour-9').val();
     hourTenNotes = $('#hour-10').val();
@@ -65,9 +66,11 @@ function SaveNotes(){
     localStorage.setItem('hour-4', hourFourNotes);
     localStorage.setItem('hour-5', hourFiveNotes);
 
+    window.scrollTo(0,0);
+    window.location.reload();
     UpdateNoteElements();
 }
-
+//Function that updates the note element text content to match local storage
 function UpdateNoteElements(){
     hourNineNotes = localStorage.getItem('hour-9');
     hourTenNotes = localStorage.getItem('hour-10');
@@ -88,12 +91,27 @@ function UpdateNoteElements(){
     hourThreeElement.text(hourThreeNotes);
     hourFourElement.text(hourFourNotes);
     hourFiveElement.text(hourFiveNotes);
+
 }
+//Clears the notes and reloads the page
 function ClearNotes(){
-    if(confirm("Do you want to delete all notes?")){
-        alert("notes deleted");
-    }
-    else{
-        alert("notes not deleted");
+    if(confirm("Do you want to delete your notes?")){
+
+        localStorage.setItem('hour-9', " ");
+        localStorage.setItem('hour-10', " ");
+        localStorage.setItem('hour-11', " ");
+        localStorage.setItem('hour-12', " ");
+        localStorage.setItem('hour-1', " ");
+        localStorage.setItem('hour-2',  " ");
+        localStorage.setItem('hour-3', " ");
+        localStorage.setItem('hour-4', " ");
+        localStorage.setItem('hour-5', " ");
+
+        alert("Notes Cleared!");
+
+        window.scrollTo(0,0);
+        window.location.reload();
+        
+        UpdateNoteElements();
     }
 }

@@ -1,3 +1,6 @@
+//
+
+//Current Time Variables
 var timeViewElement;
 var now;
 
